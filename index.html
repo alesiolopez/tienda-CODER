@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/clima.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.32/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <title>LOGIN</title>
+</head>
+<body>
+    <div id="clima-container">
+        <div id="clima-text"></div>
+    </div>
+    <h1>Bienvenido</h1>
+    <div class="login-contenedor">
+        <form id="signup" class="form"> <!-- register -->
+            <h2>Registro</h2>
+            <!-- <label for="nombre">Usuario</label> -->
+            <input type="text" id="user_nombre" placeholder="Usuario"> <span id="check_usuario"></span>
+            <br>
+            <!-- <label for="pass">Contraseña</label> -->
+            <input type="password" id="user_password" placeholder="Contraseña">
+            <br>
+            <button type="submit" id="registrar" class="boton-primario">Registrarse</button>
+            
+        </form>
+        <button id="comprobar_usuario">Comprobar usuario</button>
+    </div>
+
+    <div class="login-contenedor">
+        <form id="login" class="form">
+            <h2>Iniciar Sesión</h2>
+            <!-- <label for="nombre">Usuario</label> -->
+            <input type="text" id="user" placeholder="Usuario">
+            <br>
+            <!-- <label for="pass">Contraseña</label> -->
+            <input type="password" id="password" placeholder="Contraseña">
+            <br>
+            <button type="submit" id="ingresar" class="boton-primario">Iniciar Sesión</button>
+        </form>
+    </div>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/clima.js"></script>
+</body>
+</html>

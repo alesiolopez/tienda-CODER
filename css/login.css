@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  body{
+    background: lightblue;
+    /* background-image:url(https://www.skunexus.com/hubfs/essential-ecommerce-website-tools.jpg);
+    background-repeat: no-repeat;
+    background-position: center; */
+  }
+
+  h1{
+    text-align: center;
+  }
+
+  .login-contenedor {
+    width: 320px;
+    height: 200px;
+    border: 1px solid #CCC;
+    background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/827ced4c-062a-4dce-b568-40e8ebe9f87d/d25w0pz-7c81c8c0-17e5-4de3-94b4-e6e7bac5c043.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzgyN2NlZDRjLTA2MmEtNGRjZS1iNTY4LTQwZThlYmU5Zjg3ZFwvZDI1dzBwei03YzgxYzhjMC0xN2U1LTRkZTMtOTRiNC1lNmU3YmFjNWMwNDMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-RfwW21PQLE7SiCKLNKNYja2hK8U5AWOR-L9a-XHNDY) center center no-repeat;
+    background-size: cover;
+    margin: 30px auto;
+    border-radius: 20px;
+  }
+  .login-contenedor .form {
+    width: 100%;
+    height: 100%;
+    padding: 15px 25px;
+  }
+  .login-contenedor .form h2 {
+    color: #FFF;
+    text-align: center;
+    font-weight: normal;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .login-contenedor .form input {
+    width: 100%;
+    height: 30px;
+    margin-top: 5px;
+    background: rgba(255,255,255,.5);
+    border: 1px solid rgba(255,255,255,.1);
+    padding: 0 15px;
+    color: #FFF;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+
+.login-contenedor .submit:hover{
+    border: 1px blue solid;
+  }
+
+  .boton-primario{
+    color: lightblue;
+    background: rgb(68, 68, 255);
+    border: 1px black solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+  }
+  #comprobar_usuario{
+    color: lightblue;
+    background: rgb(68, 68, 255);
+    border: 1px black solid;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  #comprobar_usuario:hover{
+    cursor:pointer;
+    color: blue;
+    background: lightblue;
+  }
+
+  .boton-primario:hover{
+    cursor:pointer;
+    color: blue;
+    background: lightblue;
+  }

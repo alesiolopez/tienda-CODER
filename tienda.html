@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/clima.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100&display=swap" rel="stylesheet">  
+    <title>Tienda</title>
+</head>
+
+<body class="body">
+    <div id="clima-container">
+        <div id="clima-text"></div>
+    </div>
+
+    <div class="container_general">
+
+    <h1>Hola <span id="mostrar_usuario"></span>! bienvenido a la Tienda</h1>
+    <button class="btn btn-primary boton-carrito" id="boton-mostrar-carrito">Ver carrito</button>
+    <div class="container" id="contenedor-carrito">
+        <h2>Carrito</h2>
+        <table class="table table-dark">
+            <thead id="thead">
+                <tr>
+                    <td></td> <!-- columna de la imagen -->
+                    <td>Producto</td>
+                    <td>Cantidad</td>
+                    <td>Precio</td>
+                    <td></td> <!-- columna del botón borrar. -->
+                </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <h4>PRODUCTOS</h4>
+    <div class="grid-articulos col" id="contenedor-productos"></div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/clima.js"></script>
+</body>
+
+</html>
