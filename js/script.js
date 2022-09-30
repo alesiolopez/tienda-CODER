@@ -69,6 +69,7 @@ function agregar_producto_carrito(producto){
 
 
 
+
 //CARGANDO PRODUCTOS EN LA PÁGINA AUTOMÁTICAMENTE. CON BOTON AGREGAR E IMÁGEN
 
 for(let producto of stock_productos){

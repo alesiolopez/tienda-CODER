@@ -36,6 +36,7 @@ if(JSON.parse(localStorage.getItem("usuarios")) == null){
     usuarios = JSON.parse(localStorage.getItem("usuarios"));
 }
 
+
 //UTILIZO OPERADORES TERNARIOS PARA: boton comprobar usuario registrado. Funciona pero no como se esperaba, al agregar varios usuarios, se comprueba solo el ultimo que se agrega, luego si se agrega algun otro que esté registrado y no sea el último, dice que está disponible el usuario. REVISAR.
 btn_comprobar_usuario.addEventListener("click",(e)=>{
     let nombre_comprobar = input_user_nombre.value;
