@@ -60,6 +60,17 @@
   padding: 5px;
 }
 
+.btn-danger{
+  margin-top: 25px;
+  color: aqua;
+  justify-content: center;
+}
+
+.btn-danger:hover{
+  color: blue;
+  background: aqua;
+}
+
 /* .articulo{
   border: 1px lightblue solid;
   margin: 5px;
@@ -104,8 +115,13 @@ h2{
   position: sticky;
   z-index: 1;
   width: 30%; 
+  height: 70vh;
   background-color: black; 
-  height: 100vh;
+  overflow-y: scroll;
+}
+
+#thead{
+  height: auto;
 }
 
 
