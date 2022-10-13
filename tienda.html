@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.32/dist/sweetalert2.all.min.js"></script>
     <!-- FUENTES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +23,7 @@
     </div>
 
     <div class="container_general">
-
+<a href="index.html">Iniciar sesión / Registrarse</a>
     <h1>Hola <span id="mostrar_usuario"></span>! bienvenido a la Tienda</h1>
     <button class="btn btn-primary boton-carrito" id="boton-mostrar-carrito">Ver carrito</button>
     <div class="container" id="contenedor-carrito">
@@ -41,8 +42,11 @@
 
             </tbody>
         </table>
-        <button id="" class="btn_comprar">Comprar productos</button>
-        <button id="" class="btn_eliminar_total_carrito">Eliminar productos</button>
+        <p class="contenedor_precio_total">
+            Total: <span class="suma_precio"></span>
+        </p>
+        <button id="btn_comprar" class="btn_comprar">Comprar productos</button>
+        <button id="btn_eliminar_total_carrito" class="btn_eliminar_total_carrito">Eliminar productos</button>
     </div>
 
     <h4>PRODUCTOS</h4>
@@ -50,6 +54,7 @@
     </div>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="sweetalert2.all.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/clima.js"></script>
 </body>
