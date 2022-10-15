@@ -28,7 +28,7 @@ class Productos{
 
 }
 
-//Carga de productos. Instanciando productos. El 4to producto tiene stock = 0 para probar condición if.
+//Carga de productos. Instanciando productos.
 stock_productos.push(new Productos(0,"Samsung Galaxy S22 Ultra", 332000, "Celulares", "Celular Alta Gama",10,"img/articulos/samsung_s22_ultra.jpg"));
 stock_productos.push(new Productos(1,"Samsung Galaxy S22+", 273000, "Celulares", "Celular Alta Gama",9,"img/articulos/samsung_s22_plus.jpg"));
 stock_productos.push(new Productos(2,"Samsung Galaxy S21+", 332000, "Celulares", "Celular Alta Gama",7,"img/articulos/samsung_s21_plus.jpg"));
