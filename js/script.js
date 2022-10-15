@@ -43,6 +43,7 @@ stock_productos.push(new Productos(6,"Samsung Galaxy S9", 200000, "Celulares", "
 
 //CARGANDO PRODUCTOS EN LA PÁGINA AUTOMÁTICAMENTE. CON BOTON AGREGAR E IMÁGEN
 document.addEventListener("DOMContentLoaded",()=>{
+    bienvenida();
     cargar_productos();
 })
 
@@ -54,7 +55,7 @@ function cargar_productos(){
         div.innerHTML = `
             <img src="${producto.img}" class="imagen"> <br>
             <span class="titulo">${producto.nombre}</span> <br>
-            <p>Precio: <span class="precio">${producto.precio}</span></p><br>
+            <label>Precio: <span class="precio">${producto.precio}</span></label><br>
         `;
         contenedor_div.append(div);
     
@@ -67,6 +68,14 @@ function cargar_productos(){
     })
 }
 
+//BIENVENIDA
+function bienvenida(){
+    Swal.fire({position: 'center',
+    title: 'Hola! Bienvenido a la tienda! =D.', 
+    showConfirmButton: true, 
+    timer: 6000,
+    timerProgressBar: true});
+}
 
 //Agregar/eliminar producto a carrito
 
@@ -101,10 +110,8 @@ function agregar_ver_carrito(item_nombre,item_imagen, item_precio, item_id){
         boton.addEventListener("click", borrar_producto);
     }
 
-    //AGREGAMOS AL ARRAY CARRITO:
-    console.log("agregando al array elemento:",item_id)
+    //AGREGAMOS AL ARRAY CARRITO llevando el parámetro "item_id" a la funcion agregar_producto_al _array_carrito. Así agrega el producto seleccionado al array carrito.
     agregar_producto_al_array_carrito(item_id);
-    console.log("Item agregado al array elemento:",item_id)
 
     //configuramos la suma de los precios de productos
     let sum = 0;
@@ -118,32 +125,27 @@ function agregar_ver_carrito(item_nombre,item_imagen, item_precio, item_id){
     Toastify({text: "Se agregó al carrito",duration: 1000,position: "center"}).showToast()
 }
 
-//declaro variable indice para la funcion
+//declaro variable indice para la funcion borrar_producto
 let indice;
 function borrar_producto(e){
-    //borra elemento del DOM
+    //borra de a un elemento del DOM
     let nombre_producto_item = document.querySelector('.nombre_producto_item').textContent;
-    let item_a_borrar = e.target.parentNode.parentNode;
+    let item_a_borrar = e.target.parentNode.parentNode; //busco el elemento que quiero eliminar
     item_a_borrar.remove();
 
     //resolver para poder eliminar de carrito los elementos con sus índices.
     setInterval(indice = indiceFuncion(nombre_producto_item), 500);
-    console.log("-------BORRANDO--------")
-    console.log("Indice del item:",indice)
     carrito.splice(indice,1);
     //configuramos la resta de los precios de productos
     let sum = 0;
     for(item of carrito){
             sum += item.precio;
     }
-    //se muestra, feedback
+    //se muestra, feedback la suma actualizada despues de eliminar producto/s
     ver_suma_precio_total.textContent = sum;
-    console.log("Item borrado:",nombre_producto_item)
-    console.log("en carrito despues de borrar:",carrito)
-    console.log("---------------")
 
-    //Notificacion
-    Toastify({text: "Se eliminó del carrito.",duration: 1000,position: "center", style:{background:"lightblue"}}).showToast()
+    //Notificacion de eliminado
+    Toastify({text: "Se eliminó del carrito.",duration: 1500,position: "center", style:{background:"lightblue"}}).showToast()
 }
 
 //Funcion para buscar indice en array carrito:
@@ -152,19 +154,14 @@ function indiceFuncion(nombre_producto_item){
     return map_prod;
 }
 
-//Programo funcion para agregar producto al array carrito:
+//Funcion para agregar producto al array carrito:
 function agregar_producto_al_array_carrito(item_id){
-console.log("--------AGREGANDO-------")
-
 carrito.push(stock_productos[item_id]); //se agrega el elemento seleccionado según el id definido en cada button previamente.
-
-console.log("Carrito:",carrito)
 }
 
 //Configuramos el boton comprar:
 btn_comprar_carrito.addEventListener("click",comprar_carrito);
 function comprar_carrito(e){
-    console.log("Tabla antes",tabla)
     let cantidad_elementos = carrito.length;
     if(cantidad_elementos == 0){
         Toastify({text: "Agregar productos al carrito para comprar.",duration: 1500,position: "center", style:{color: "black",background:"lightblue",margin:"200px"}}).showToast()
@@ -174,7 +171,7 @@ function comprar_carrito(e){
         tabla.remove(); //Eliminamos el feedback del carrito. REVISAR por qué no borra todos los elementos del DOM
         
         ver_suma_precio_total.textContent = "$0"; // feedback del precio total
-        Swal.fire({position: 'center',icon: 'success', title: 'Compraste el carrito correctamente.', showConfirmButton: true, timer: 5000,timerProgressBar: true});
+        Swal.fire({position: 'center',icon: 'success', title: 'Compraste todo el carrito exitosamente! =D Gracias por su compra.', showConfirmButton: true, timer: 5000,timerProgressBar: true});
     }
 }
 
@@ -182,11 +179,26 @@ function comprar_carrito(e){
 let btn_eliminar_prod = document.getElementById('btn_eliminar_total_carrito');
 btn_eliminar_prod.addEventListener('click',()=>{
     if(carrito.length != 0){
-        carrito.splice(0,carrito.length); //eliminamos todos los elementos del array despues de comprar. OK
-        tabla.remove(); //Eliminamos el feedback del carrito. REVISAR por qué no borra todos los elementos del DOM
-        
-        ver_suma_precio_total.textContent = "$0"; // feedback del precio total
-        Swal.fire({position: 'center',icon: 'warning', title: 'Vaciaste el carrito', showConfirmButton: true, timer: 5000,timerProgressBar: true});
+        Swal.fire({
+            title: '¿Estás seguro de eliminar todos los artículos del carrito? =|',
+            text: "No puedes revertir esta acción! =O",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, limpiar carrito!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                carrito.splice(0,carrito.length); //eliminamos todos los elementos del array despues de comprar. OK
+                tabla.remove(); //Eliminamos el feedback del carrito. REVISAR por qué no borra todos los elementos del DOM
+                ver_suma_precio_total.textContent = "$0"; // feedback del precio total
+              Swal.fire(
+                'Carrito limpio! =D',
+                'Todos los artículos fueron eliminados del carrito correctamente.',
+                'success'
+              )
+            }
+          })
     }else{
         Toastify({text: "Agregar productos al carrito para comprar.",duration: 1500,position: "center", style:{color: "black",background:"lightblue",margin:"200px"}}).showToast();
     }
