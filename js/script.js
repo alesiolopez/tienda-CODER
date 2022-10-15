@@ -6,6 +6,7 @@ const carrito = [];
 //Variables de elementos:
 const mostrar_carrito = document.getElementById("contenedor-carrito");
 const contenedor_div = document.getElementById('contenedor-productos');
+const table = document.getElementById('table')
 const tabla = document.getElementById('tbody');
 const btn_comprar_carrito = document.getElementById("btn_comprar");
 const btn_eliminar_carrito = document.getElementById("");
@@ -26,11 +27,6 @@ class Productos{
     }
 
 }
-
-//Productos que tenga mayores a 2 unidades incluidos, que se muestren en el template
-/* function mostrar_stock(producto){
-    return producto.stock <10
-} */
 
 //Carga de productos. Instanciando productos. El 4to producto tiene stock = 0 para probar condición if.
 stock_productos.push(new Productos(0,"Samsung Galaxy S22 Ultra", 332000, "Celulares", "Celular Alta Gama",10,"img/articulos/samsung_s22_ultra.jpg"));
@@ -59,7 +55,6 @@ function cargar_productos(){
             <img src="${producto.img}" class="imagen"> <br>
             <span class="titulo">${producto.nombre}</span> <br>
             <p>Precio: <span class="precio">${producto.precio}</span></p><br>
-        
         `;
         contenedor_div.append(div);
     
@@ -169,19 +164,33 @@ console.log("Carrito:",carrito)
 //Configuramos el boton comprar:
 btn_comprar_carrito.addEventListener("click",comprar_carrito);
 function comprar_carrito(e){
-    console.log(tabla)
+    console.log("Tabla antes",tabla)
     let cantidad_elementos = carrito.length;
     if(cantidad_elementos == 0){
         Toastify({text: "Agregar productos al carrito para comprar.",duration: 1500,position: "center", style:{color: "black",background:"lightblue",margin:"200px"}}).showToast()
     }else{
-        Swal.fire({position: 'center',icon: 'success', title: 'Compraste el carrito correctamente.', showConfirmButton: true, timer: false});
-        carrito.splice(0,cantidad_elementos); //eliminamos todos los elementos del array despues de comprar.
+        carrito.splice(0,cantidad_elementos); //eliminamos todos los elementos del array despues de comprar. OK
         let ver_carrito_fila = document.querySelector('.ver_carrito_fila')
-        ver_carrito_fila.remove()
-        // feedback del precio total
-        ver_suma_precio_total.textContent = "$0";
+        tabla.remove(); //Eliminamos el feedback del carrito. REVISAR por qué no borra todos los elementos del DOM
+        
+        ver_suma_precio_total.textContent = "$0"; // feedback del precio total
+        Swal.fire({position: 'center',icon: 'success', title: 'Compraste el carrito correctamente.', showConfirmButton: true, timer: 5000,timerProgressBar: true});
     }
 }
+
+//Boton "Eliminar productos"
+let btn_eliminar_prod = document.getElementById('btn_eliminar_total_carrito');
+btn_eliminar_prod.addEventListener('click',()=>{
+    if(carrito.length != 0){
+        carrito.splice(0,carrito.length); //eliminamos todos los elementos del array despues de comprar. OK
+        tabla.remove(); //Eliminamos el feedback del carrito. REVISAR por qué no borra todos los elementos del DOM
+        
+        ver_suma_precio_total.textContent = "$0"; // feedback del precio total
+        Swal.fire({position: 'center',icon: 'warning', title: 'Vaciaste el carrito', showConfirmButton: true, timer: 5000,timerProgressBar: true});
+    }else{
+        Toastify({text: "Agregar productos al carrito para comprar.",duration: 1500,position: "center", style:{color: "black",background:"lightblue",margin:"200px"}}).showToast();
+    }
+});
 
 //tomamos el evento click del botón "VER CARRITO"
 let boton_mostrar_carrito = document.querySelector("#boton-mostrar-carrito");
